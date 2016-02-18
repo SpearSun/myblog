@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  slug: MyString
+  body: MyText
+  body_html: MyText
+  active: false
+  approved_comments_count: 1
+  cached_tag_list: MyString
+  published_at: 2016-02-18 14:11:52
+  edited_at: 2016-02-18 14:11:52
+
+two:
+  title: MyString
+  slug: MyString
+  body: MyText
+  body_html: MyText
+  active: false
+  approved_comments_count: 1
+  cached_tag_list: MyString
+  published_at: 2016-02-18 14:11:52
+  edited_at: 2016-02-18 14:11:52
