@@ -117,7 +117,6 @@ ol li {
   float: right; 
   width: auto;
   margin-left: 10px;
-  align: right;
 }
 
 .center { 
@@ -201,7 +200,7 @@ nav {
   width: 224px;
 }
 
-.inner_copyright{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
+.inner_copyright{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;clear:both;}
 
 .sidebar { 
   float: right;
@@ -290,6 +289,7 @@ footer {
   background: #404040 url(../images/footer.png) repeat-x;
   color: #A8AA94;
   margin: 0 0 0 0;
+  float: bottom;
 }
 
 footer p { 

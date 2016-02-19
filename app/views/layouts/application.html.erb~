@@ -51,7 +51,7 @@
       <div id="sidebar_container">
         <img class="paperclip" src="/assets/images/paperclip.png" alt="paperclip" />
         <div class="sidebar">
-          <h3>Useful Links</h3>
+          <h3>Personal Information</h3>
           <ul>
             <li><a href="#">First Link</a></li>
             <li><a href="#">Another Link</a></li>
@@ -77,30 +77,19 @@
           <p>2012 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
         </div>
       </div>
+
       <div class="content">
-
         <%= yield %>
-
-        <img style="float: left; vertical-align: middle; margin: 0 10px 0 0;" src="/assets/images/home.png" alt="home" /><h1 style="margin: 15px 0 0 0;">Welcome to the CSS3_two template</h1>
-        <p>This simple, fixed width website template is released under a Creative Commons Attribution 3.0 Licence. This means you are free to download and use it for personal and commercial projects. However, you <strong>must leave the 'design from css3templates.co.uk' link in the footer of the template</strong>.</p>
-        <p>This template is written entirely in <strong>HTML5</strong> and <strong>CSS3</strong>.</p>
-        <p>You can view more free CSS3 web templates <a href="http://www.cssmoban.com">here</a>.</p>
-        <p>This template is a fully documented 5 page website, with an <a href="examples.html">examples</a> page that gives examples of all the styles available with this design. There is also a working PHP contact form on the contact page.</p>
-        <p></p>
-        <img style="float: left; vertical-align: middle; margin: 0 10px 0 0;" src="/assets/images/browser.png" alt="browser" /><h1 style="margin: 15px 0 0 0;">Browser Compatibility</h1>
-        <p>This template has been tested in the following browsers:</p>
-        <ul>
-          <li>Internet Explorer 8</li>
-          <li>Internet Explorer 7</li>
-          <li>FireFox 10</li>
-          <li>Google Chrome 17</li>
-          <li>Safari 4</li>
-        </ul>
       </div>
+
     </div>
+
+
+
     <div id="scroll">
       <a title="Scroll to the top" class="top" href="#"><img src="/assets/images/top.png" alt="top" /></a>
     </div>
+  
     <footer>
       <p><a href="index.html">Home</a> | <a href="examples.html">Examples</a> | <a href="page.html">A Page</a> | <a href="another_page.html">Another Page</a> | <a href="contact.php">Contact Us</a></p>
       <p>Copyright &copy; CSS3_two | <a href="http://www.cssmoban.com">模板之家</a></p>
