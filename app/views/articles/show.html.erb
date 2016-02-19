@@ -1,7 +1,30 @@
 <div class="content">
   <img style="float: left; vertical-align: middle; margin: 0 10px 0 0;" src="/assets/images/another_page.png" alt="article page" /><h2 style="margin: 15px 0 0 0;"> <%= @article.title %> </h1>
-  <%= @article.edited_at %><br/><br/>
+  <%= @article.updated_at.strftime("%b %-d %Y %H:%M:%S") %><br/><br/>
   <p><%= @article.body %></p>  
+
+  Total <%= plural(@article.comments.size, "comment") %>: 
+  <% @article.comments.sort.each do |comment| %>
+    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;">
+    <p style="font-size: 15px;"><%= comment.author %> &#183 <%= time_diff(comment.created_at) %></p>
+    <p style="font-size: 18px;">
+      <%= comment.body %>
+    </p>
+  <% end %>
+  <hr style="height:1px;border:none;border-top:1px dashed #0066CC;">
+
+  Add a comment: 
+  <%= form_for([@article, @article.comments.build]) do |f| %>
+    <p>
+    <%= f.label :commenter %>
+    <%= f.text_field :author %>
+    </p><p>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+    </p><p>
+    <%= f.submit %>
+    </p>
+  <% end %>
 
   <div class="right">
     <%= link_to 'Edit', edit_article_path(@article) %> |

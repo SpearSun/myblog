@@ -1,0 +1,41 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="create_user">
+    <%= f.label :name, '*Name' %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="create_user">
+    <%= f.label :password, '*Password' %><br>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="create_user">
+    <%= f.label :password_confirmation, '*Password confirmation' %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="create_user">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="create_user">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="create_user">
+    <%= f.submit %><br>
+  </div>
+<% end %>

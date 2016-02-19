@@ -20,7 +20,7 @@ article, aside, figure, footer, header, hgroup, nav, section {
 
 body { 
   font: normal .80em arial, sans-serif;
-  background: #F8F7EE url(../images/pattern.png);
+  background: #F8F7EE url(images/pattern.png);
   color: #7A7A68;
 }
 
@@ -139,7 +139,7 @@ header {
 #logo { 
   width: 1000px;
   height: 200px;
-  background: transparent url(../images/logo.png) no-repeat right;
+  background: transparent url(images/logo.png) no-repeat right;
   color: #888;
   padding: 0;
 }
@@ -180,7 +180,7 @@ nav {
   height: 44px;
   width: 100%;
   margin: -44px auto 0 auto;
-  background: transparent url(../images/menubar.png) repeat;
+  background: transparent url(images/menubar.png) repeat;
 } 
 
 #menu_container { 
@@ -273,7 +273,7 @@ nav {
 
 .content ul li, .sidebar ul li { 
   list-style-type: none;
-  background: url(../images/bullet.png) no-repeat;
+  background: url(images/bullet.png) no-repeat;
   margin: 0 0 0 0; 
   padding: 0 0 4px 28px;
   line-height: 1.5em;
@@ -286,7 +286,7 @@ footer {
   height: 60px;
   padding: 20px 0 5px 0;
   text-align: center; 
-  background: #404040 url(../images/footer.png) repeat-x;
+  background: #404040 url(images/footer.png) repeat-x;
   color: #A8AA94;
   margin: 0 0 0 0;
 }
@@ -501,7 +501,7 @@ span.sf-arrow {
   top: 20px;
   right: 5px;
   display: block;
-  background: url(../images/arrows-white.png) no-repeat 0 0;
+  background: url(images/arrows-white.png) no-repeat 0 0;
   overflow: hidden; /* making sure IE6 doesn't overflow and expand the box */
   font-size: 1px;
 }
@@ -518,7 +518,7 @@ ul#nav {
 }
 
 ul#nav ul { 
-  background: url(../images/menu_hover.png) repeat;
+  background: url(images/menu_hover.png) repeat;
   margin-top: 5px;
   padding-bottom: 15px;
 }
