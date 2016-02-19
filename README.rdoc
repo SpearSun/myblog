@@ -8,6 +8,8 @@ This is a blog program constructed base on:
 
 * Rails 4.2.1
 
+== Set default character set when create database to support chinese character
+create database myblog_development default character set = 'utf8';
 =============================
 This README would normally document whatever steps are necessary to get the
 application up and running.
