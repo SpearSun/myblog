@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    redirect_to root_path
   end
 
   # GET /user/new
@@ -29,6 +30,28 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def sign_in
+    if request.post? and user_params
+      user = User.find_by_name(user_params["name"])
+      if user and user.authenticate(user_params["password"])
+        session[:id] = user.id
+        session[:name] = user.name
+        flash[:notice] = "User #{user.name} signed in."
+        redirect_to root_path
+      else
+        user.password = nil
+        flash[:notice] = "Invalid name or password!"
+        redirect_to root_path
+      end
+    end
+  end
+
+  def sign_out
+    session[:name] = nil
+    flash[:notice] = request.url.inspect
+    redirect_to root_path
   end
 
   # PATCH/PUT /users/1

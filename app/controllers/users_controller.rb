@@ -32,6 +32,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def sign_in
+    if request.post? and user_params
+      user = User.find_by_name(user_params["name"])
+      if user and user.authenticate(user_params["password"])
+        session[:id] = user.id
+        session[:name] = user.name
+        flash[:notice] = "User #{user.name} signed in."
+        redirect_to root_path
+      else
+        user.password = nil
+        flash[:notice] = "Invalid name or password!"
+        redirect_to root_path
+      end
+    end
+  end
+
+  def sign_out
+    session[:name] = nil
+    flash[:notice] = "User signed out."
+    redirect_to root_path
+  end
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update

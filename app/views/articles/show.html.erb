@@ -1,9 +1,13 @@
 <div class="content">
+  <% if flash[:notice] -%>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end -%>
+
   <img style="float: left; vertical-align: middle; margin: 0 10px 0 0;" src="/assets/images/another_page.png" alt="article page" /><h2 style="margin: 15px 0 0 0;"> <%= @article.title %> </h1>
   <%= @article.updated_at.strftime("%b %-d %Y %H:%M:%S") %><br/><br/>
   <p><%= @article.body %></p>  
 
-  Total <%= plural(@article.comments.size, "comment") %>: 
+  Total <%= pluralize(@article.comments.size, "comment") %>: 
   <% @article.comments.sort.each do |comment| %>
     <hr style="height:1px;border:none;border-top:1px dashed #0066CC;">
     <p style="font-size: 15px;"><%= comment.author %> &#183 <%= time_diff(comment.created_at) %></p>

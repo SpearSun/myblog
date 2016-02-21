@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def create
-    user = User.findby(name: params[:name])
+    user = User.find_by(name: params[:name], password)
     if user 
       session[:name] = user.name
       redirect_to root_path

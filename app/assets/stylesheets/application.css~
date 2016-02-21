@@ -15,5 +15,5 @@
  */
 
 .notice {
-  color: green;
+  font-color: green;
 }
