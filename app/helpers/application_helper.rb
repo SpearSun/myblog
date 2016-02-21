@@ -1,3 +1,13 @@
 module ApplicationHelper
-  
+  def sign_in_or_out
+    links = {}
+    if session[:name]
+      links[session[:name]] = '#'
+      links['Sign Out'] = "sign_out"
+    else
+      links['Sign In'] = "sign_in"
+      links['Sign Up'] = "/users/new"
+    end
+    links
+  end
 end
