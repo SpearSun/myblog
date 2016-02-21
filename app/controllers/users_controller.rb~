@@ -32,16 +32,21 @@ class UsersController < ApplicationController
     end
   end
 
+  attr_accessor :remember_me
+
   def sign_in
     if request.post? and user_params
-      user = User.find_by_name(user_params["name"])
-      if user and user.authenticate(user_params["password"])
-        session[:id] = user.id
-        session[:name] = user.name
-        flash[:notice] = "User #{user.name} signed in."
+      @user = User.find_by_name(user_params["name"])
+      if @user and @user.authenticate(user_params["password"])
+        session[:id] = @user.id
+        session[:name] = @user.name
+        cookies[:remember_me] = { value: 1, expires: 1.months.from_now }
+        @user.authorization_token = Digest::SHA1.hexdigest("#{@user.name}:#{@user.password_digest}")
+        cookies[:authorization_token] = { value: @user.authorization_token, expires: 1.months.from_now }
+        flash[:notice] = "User #{@user.name} signed in."
         redirect_to root_path
       else
-        user.password = nil
+        @user.clear_password!
         flash[:notice] = "Invalid name or password!"
         redirect_to root_path
       end
@@ -49,8 +54,10 @@ class UsersController < ApplicationController
   end
 
   def sign_out
+    cookies.delete[:remember_me]
+    cookies.delete[:authorization_token]
     session[:name] = nil
-    flash[:notice] = request.url.inspect
+    flash[:notice] = "User signed out."
     redirect_to root_path
   end
 

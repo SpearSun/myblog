@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  def last_active_date
+  def sign_in!(session)
+    session[:name] = name
+  end
+  
+  def clear_password!
+    self.password = nil
   end
 end

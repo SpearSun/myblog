@@ -53,19 +53,13 @@
         <div class="sidebar">
           <h3>Personal Information</h3>
           <ul>
-            <li><% if signed_in? %>
-                <%= session[:name] %><%= link_to 'Sign Out', sign_out_path %>
-              <% else %>
-                <%= link_to 'Sign Up', new_user_path %>
-                <li><%= link_to 'Sign In', sign_in_path %><li>
-              <% end %>
-            </li>
-            
             <% sign_in_or_out.each do |key, value| -%>
               <li><%= link_to key, value %></li>
             <% end -%>
 
-            <li><a href="#">Another Link</a></li>
+            <li><%= link_to_if logged_in?, session[:name], '#' %></li>
+            <li><%= link_to_if logged_in?, "Sign Out", sign_out_path %></li>
+            <li><%= link_to_unless logged_in?, "Sign In", sign_in_path %></li>
             <li><a href="#">And Another</a></li>
             <li><a href="#">Last One</a></li>
           </ul>
