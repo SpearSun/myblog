@@ -32,10 +32,14 @@ gem 'bcrypt', '~> 3.1.10'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Move the web-console to this new created development block to avoid an error in rails s -e test environment
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 end
+
+# will_paginate is a pagination library that integrates with Rails, Sinatra, Merb, DataMapper and Sequel. 
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
