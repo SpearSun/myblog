@@ -38,11 +38,8 @@ class UsersController < ApplicationController
     if request.post? and user_params
       @user = User.find_by_name(user_params["name"])
       if @user and @user.authenticate(user_params["password"])
-        session[:id] = @user.id
-        session[:name] = @user.name
-        cookies[:remember_me] = { value: 1, expires: 1.months.from_now }
-        @user.authorization_token = Digest::SHA1.hexdigest("#{@user.name}:#{@user.password_digest}")
-        cookies[:authorization_token] = { value: @user.authorization_token, expires: 1.months.from_now }
+        @user.sign_in!(session)
+        remember_me? ? @user.remember!(cookies) : @user.forget!(cookies)
         flash[:notice] = "User #{@user.name} signed in."
         redirect_to root_path
       else
@@ -54,13 +51,20 @@ class UsersController < ApplicationController
   end
 
   def sign_out
-    cookies.delete[:remember_me]
-    cookies.delete[:authorization_token]
+    # cookies.delete(:remember_me)
+    # cookies.delete(:authorization_token)
+    user = User.find_by(name: session[:name])
+    user.forget!(cookies)
+    user.sign_out!(session)
     session[:name] = nil
     flash[:notice] = "User signed out."
     redirect_to root_path
   end
 
+  def remember_me?
+    remember_me == "1"
+  end
+    
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
