@@ -64,7 +64,7 @@
         <img class="paperclip" src="/assets/images/paperclip.png" alt="paperclip" />
         <div class="sidebar">
           <h3>Article Groups</h3>
-          <%= render "/archives/index" %>
+          <%= render "/archives/archive" %>
           <ul>
             <li><a href="#">First Link</a></li>
             <li><a href="#">Another Link</a></li>
