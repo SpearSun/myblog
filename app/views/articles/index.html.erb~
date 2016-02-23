@@ -1,0 +1,22 @@
+<% if flash[:notice] -%>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end -%>
+
+<!--h1>Listing Articles</h1-->
+
+  <% @articles.each do |article| %>
+      
+    <img style="float: left; vertical-align: middle; margin: 0 10px 0 0; width: 60px; heigth: 60px;" src="/assets/images/home.png" alt="home" /><h1 style="margin: 15px 0 0 0;"><%= link_to article.title, article %></h1>
+    <p><%= article.updated_at %></p>
+    <p><%= article.cached_tag_list %></p>
+    <p><%= article.body[0, 150] %> ......</p>
+    <div class="right"><%= link_to 'Show', article %>
+    <%= link_to 'Edit', edit_article_path(article) %>
+    <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></div><br />
+  <% end %>
+
+  <%= will_paginate @articles %>
+  <div class="right"><%= select_tag "per_page", "<option>5</option><option>10</option><option>15</option>".html_safe %></div>
+<br>
+
+<%= link_to 'New Article', new_article_path %>

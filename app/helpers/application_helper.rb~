@@ -2,7 +2,7 @@ module ApplicationHelper
   def sign_in_or_out
     links = {}
     if session[:name]
-      links[session[:name]] = '/users/show'
+      links[session[:name]] = 'users/show'
       links['Sign Out'] = "/sign_out"
     else
       links['Sign In'] = "/sign_in"
