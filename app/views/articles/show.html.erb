@@ -5,7 +5,7 @@
 
   <img style="float: left; vertical-align: middle; margin: 0 10px 0 0;" src="/assets/images/another_page.png" alt="article page" /><h2 style="margin: 15px 0 0 0;"> <%= @article.title %> </h1>
   <%= @article.updated_at.strftime("%b %-d %Y %H:%M:%S") %><br/><br/>
-  <p><%= @article.body %></p>  
+  <p><%= markdown(@article.body) %></p>  
 
   Total <%= pluralize(@article.comments.size, "comment") %>: 
   <% @article.comments.sort.each do |comment| %>

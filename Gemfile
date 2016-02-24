@@ -43,6 +43,9 @@ end
 # will_paginate is a pagination library that integrates with Rails, Sinatra, Merb, DataMapper and Sequel. 
 gem 'will_paginate', '~> 3.1.0'
 
+gem 'redcarpet'
+gem 'coderay'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
