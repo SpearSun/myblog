@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160221131117) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "article_id",   limit: 4
+    t.string   "article_id",   limit: 255
     t.string   "author",       limit: 255
     t.integer  "author_id",    limit: 4
     t.string   "author_url",   limit: 255
