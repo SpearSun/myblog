@@ -16,7 +16,7 @@
   <% end %>
 
   <%= will_paginate @articles %>
-  <div class="right"><%= select_tag "per_page", "<option>5</option><option>10</option><option>15</option>".html_safe %></div>
+  
 <br>
 
-<%= link_to 'New Article', new_article_path %>
+<button type="button" class="btn btn-primary"><%= link_to 'New Article', new_article_path %></button>
