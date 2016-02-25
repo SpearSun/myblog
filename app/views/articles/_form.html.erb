@@ -13,33 +13,23 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :slug %><br>
-    <%= f.text_field :slug %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :body_html %><br>
-    <%= f.text_area :body_html %>
-  </div>
-  <div class="field">
-    <%= f.label :active %><br>
-    <%= f.check_box :active %>
+    <%= f.text_area :body, class: "form-control", rows: 20 %>
   </div>
   <div class="field">
     <%= f.label :approved_comments_count %><br>
-    <%= f.number_field :approved_comments_count %>
+    <%= f.number_field :approved_comments_count, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :cached_tag_list %><br>
-    <%= f.text_field :cached_tag_list %>
+    <%= f.text_field :cached_tag_list, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <br>
+  <div class="btn-group">
+    <%= f.submit class: "btn btn-primary btn-sm active" %>
+    <%= link_to 'Back', articles_path, class: "btn btn-primary btn-sm active pull-right" %>
   </div>
 <% end %>

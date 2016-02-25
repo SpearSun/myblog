@@ -20,13 +20,13 @@
   Add a comment: 
   <%= form_for([@article, @article.comments.build]) do |f| %>
     <p>
-    <%= f.label :commenter %>
-    <%= f.text_field :author %>
+    <%= f.label :commenter %><br>
+    <%= f.text_field :author, class: "form-control" %>
     </p><p>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
+    <%= f.label :body %><br>
+    <%= f.text_area :body, class: "form-control" %>
     </p><p>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary btn-sm active" %>
     </p>
   <% end %>
 
