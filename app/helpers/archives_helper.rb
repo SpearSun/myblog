@@ -1,6 +1,5 @@
 module ArchivesHelper
-  def archive_cats
-    @months = Article.find_by_sql "select date_format(updated_at, '%Y %b') from articles group by date_format(updated_at, '%Y %b')"
-    # @months = ["May", "Sep"]
+  def archive_months
+    @months = Article.select("date_format(updated_at, '%b %Y') as ym_name, date_format(updated_at, '%Y%m') as ym_code").group("date_format(updated_at, '%Y %b')").order("date_format(updated_at, '%Y%m')")
   end
 end

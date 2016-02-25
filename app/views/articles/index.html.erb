@@ -7,14 +7,12 @@
 <!--h1>Listing Articles</h1-->
 
   <% @articles.each do |article| %>
-      
-    <img style="float: left; vertical-align: middle; margin: 0 10px 0 0; width: 60px; heigth: 60px;" src="/assets/images/home.png" alt="home" /><h1 style="margin: 15px 0 0 0;"><%= link_to article.title, article %></h1>
-    <p><%= article.updated_at.strftime("%b %-d %Y %H:%M:%S") %></p>
-    <p><%= article.cached_tag_list %></p>
+    <h3><%= link_to article.title, article %></h3>
     <p><%= article.body[0, 150] %> ......</p>
-    <div class="right"><%= link_to 'Show', article %>
-    <%= link_to 'Edit', edit_article_path(article) %>
-    <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></div><br />
+    <p class="pull-right text-info"><%= article.updated_at.strftime("%b %-d %Y %H:%M:%S") %></p>
+    <div class="pull-right"><%# = link_to 'Show', article %>
+    <%#= link_to 'Edit', edit_article_path(article) %>
+    <%#= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></div><br>
   <% end %>
 
   <%= will_paginate @articles %>

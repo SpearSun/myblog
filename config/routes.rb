@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'sign_out' => 'users#sign_out'
   resources :sessions, only: [:create]
 
+  get 'archives' => 'archives#index'
+
   resources :users do
     get :likes
     resources :articles

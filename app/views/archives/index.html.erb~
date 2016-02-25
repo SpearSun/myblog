@@ -1,0 +1,6 @@
+<h2>Articles post at <%= Time.new(@category[0,4], @category[4,2]).strftime('%b %Y') %></h2>
+
+<%= @articles.each do |article| %>
+  <%= article.title %>
+<% end %>
+
