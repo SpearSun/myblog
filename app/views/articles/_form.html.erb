@@ -24,11 +24,16 @@
     <%= f.number_field :approved_comments_count, class: "form-control" %>
   </div>
   <div class="field">
-    <%= f.label :cached_category_list %><br>
-    <%= f.text_field :cached_category_list, class: "form-control" %>
+    <%= f.label :category %><br>
+    <%#= f.select :cached_category_list, category_list.collect { |cat| [cat.name, cat.id] }, class: "form-control" %>
+    <select class="form-control" name="article[cached_category_list]">
+      <% category_list.each do |cat| -%>
+        <option value="<%= cat.id %>"><%= cat.name %></option> 
+      <% end -%>
+    </select>  
   </div>
   <div class="field">
-    <%= f.label :cached_tag_list %><br>
+    <%= f.label :tag_list %><strong> (Seperate by &quot&#59")</strong><br>
     <%= f.text_field :cached_tag_list, class: "form-control" %>
   </div>
   <br>

@@ -1,10 +1,12 @@
+require 'will_paginate/array'
+
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 5)
+    @articles = Article.order(updated_at: :desc).paginate(page: params[:page], per_page: 5)
   end
 
   # GET /articles/1
@@ -70,6 +72,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :slug, :body, :body_html, :active, :approved_comments_count, :cached_tag_list, :updated_at, :edited_at)
+      params.require(:article).permit(:title, :slug, :body, :body_html, :active, :cached_category_list, :approved_comments_count, :cached_tag_list, :updated_at, :edited_at)
     end
 end

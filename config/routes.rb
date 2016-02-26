@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
 
   get 'archives' => 'archives#index'
+  get 'categories' => 'categories#index'
 
   resources :users do
     get :likes
