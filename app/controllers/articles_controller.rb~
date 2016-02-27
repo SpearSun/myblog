@@ -8,10 +8,10 @@ class ArticlesController < ApplicationController
   def index
     key_word = params[:key_word]
     if key_word.nil?
-      @articles = Article.order(updated_at: :desc)#.paginate(page: params[:page], per_page: 5)
+      @articles = Article.order(updated_at: :desc)
     else
-      @articles = Article.find_by_sql("select * from articles where title like '%#{key_word}%'")#.paginate(page: params[:page], per_page: 5)
-      @articles = @articles.empty? ? Article.new(title: "No Record Found") : @articles
+      @articles = Article.find_by_sql("select * from articles where title like '%#{key_word}%' or body like '%#{key_word}%'").order(updated_at: :desc)
+      @articles = (@articles.empty? ? [Article.new(title: "No Record Found", body: "No Record Found", updated_at: Time.now)] : @articles)
     end
     @articles = @articles.paginate(page: params[:page], per_page: 5)
   end
