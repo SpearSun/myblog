@@ -6,7 +6,14 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.order(updated_at: :desc).paginate(page: params[:page], per_page: 5)
+    key_word = params[:key_word]
+    if key_word.nil?
+      @articles = Article.order(updated_at: :desc)#.paginate(page: params[:page], per_page: 5)
+    else
+      @articles = Article.find_by_sql("select * from articles where title like '%#{key_word}%'")#.paginate(page: params[:page], per_page: 5)
+      @articles = (@articles.empty? ? Article.new(title: "No Record Found") : @articles)
+    end
+    @articles = @articles.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /articles/1
