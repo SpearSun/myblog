@@ -20,4 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  sign_in: "Please sign in"
+  time:
+    formats:
+      default: "%b %-d %Y %H:%M:%S"
+  application:
+    home: "Home"
+    categories: "Categories"
+    search_button: "Submit"
+    sign_in: "Please sign in"
+    sign_up: "Sign Up"
+    sign_out: "Sign Out"
+    about: "About"
+    archives: "Archives"
+    elsewhere: "Elsewherre"
+  article:
+    new_article: "New Article"
+  

@@ -2,8 +2,8 @@ module ApplicationHelper
   def sign_in
     links = {}
     unless session[:name]
-      links['Sign In'] = "/sign_in"
-      links['Sign Up'] = "/users/new"
+      links['application.sign_in'] = "/sign_in"
+      links['application.sign_up'] = "/users/new"
     else
       links["Logged in as " + session[:name]] = '/users/show'
     end
@@ -13,7 +13,7 @@ module ApplicationHelper
   def sign_out
     links = {}
     if session[:name]
-      links['Sign Out'] = "/sign_out"
+      links['application.sign_out'] = "/sign_out"
     end
     links
   end

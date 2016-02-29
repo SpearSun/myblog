@@ -20,4 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 cn:
-  sign_in: "登录"
+  time:
+    formats:
+      default: "%Y年 %m月 %d日 %H:%M:%S"
+  application:
+    home: "首页"
+    categories: "分类"
+    search_button: "搜索"
+    sign_in: "登录"
+    sign_up: "注册"
+    sign_out: "登出"
+    about: "关于本站"
+    archives: "归档"
+    elsewhere: "链接"
+  article:
+    new_article: "新建文章"
+  
