@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
     if key_word.nil?
       @articles = Article.order(updated_at: :desc)
     else
-      @articles = Article.find_by_sql("select * from articles where title like '%#{key_word}%' or body like '%#{key_word}%'").order(updated_at: :desc)
+      @articles = Article.find_by_sql("select * from articles where title like '%#{key_word}%' or body like '%#{key_word}%'")
       @articles = (@articles.empty? ? [Article.new(title: "No Record Found", body: "No Record Found", updated_at: Time.now)] : @articles)
     end
     @articles = @articles.paginate(page: params[:page], per_page: 5)
@@ -24,6 +24,10 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+
+    respond_to do |format|
+      format.js     {}
+    end
   end
 
   # GET /articles/1/edit
@@ -38,6 +42,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.js   {}
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }

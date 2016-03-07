@@ -32,7 +32,7 @@ gem 'bcrypt', '~> 3.1.10'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap-sass', '~> 3.3.5'
+# gem 'bootstrap-sass', '~> 3.3.5'
 
 # Move the web-console to this new created development block to avoid an error in rails s -e test environment
 group :development do

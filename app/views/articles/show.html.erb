@@ -21,7 +21,7 @@
   <hr style="height:1px;border:none;border-top:1px dashed #0066CC;">
 
   Add a comment: 
-  <%= form_for([@article, @article.comments.build]) do |f| %>
+  <%= form_for([@article, @article.comments.build], remote: true) do |f| %>
     <p>
     <%= f.label :commenter %><br>
     <%= f.text_field :author, class: "form-control" %>
