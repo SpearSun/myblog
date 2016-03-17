@@ -1,1 +1,2 @@
-$("<%= escape_javascript(render @comment) %>").appendTo("#append").hide().fadeIn();
+//$("<%= escape_javascript(render @comment) %>").appendTo("#comments").hide().fadeIn();
+$("#comments").append("<%= escape_javascript(render @comment) %>");

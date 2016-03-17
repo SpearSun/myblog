@@ -1,1 +1,5 @@
-<%= @comment.body %>
+<li class="list-group-item">
+  <span style="color:blue;"><%= @comment.author %></span> &#183 
+  <span style="color:green;"><%= "##{@floor}" %></span> &#183 
+  <%= time_diff(@comment.created_at) %><br>
+<%= @comment.body %></li>

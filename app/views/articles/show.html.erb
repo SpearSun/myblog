@@ -3,26 +3,36 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end -%>
 
-  <h3><%= @article.title %></h3>
-  <%= @article.updated_at.strftime("%b %-d %Y %H:%M:%S") %>
+  <ul class="list-group">
+  <li class="list-group-item"><h3><%= @article.title %></h3>
+  <span class="text-info"><%= @article.updated_at.strftime("%b %-d %Y %H:%M:%S") %></span>
   <div class="pull-right"><% @article.cached_tag_list.split(";").each do |tag| -%>
     <span class="label label-info"><%= tag%></span>
   <% end -%></div>
   <p><%= markdown(@article.body) %></p>  
 
-  Total <%= pluralize(@article.comments.size, "comment") %>: 
-  <% @article.comments.sort.each do |comment| %>
-    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;">
-    <p style="font-size: 15px;"><%= comment.author %> &#183 <%= time_diff(comment.created_at) %></p>
-    <p style="font-size: 18px;">
-      <%= comment.body %>
-    </p>
+  <div class="pull-right">
+    <%= link_to 'Edit', edit_article_path(@article) %> |
+    <%= link_to 'Back', articles_path %>  
+  </div>
+  </li></ul>
+
+  <ul id="comments" class="list-group">
+  <li class="list-group-item">Total <%= pluralize(@article.comments.size, "comment") %>: </li>
+  <% @article.comments.sort.each_index do |index| %>
+    <li class="list-group-item">
+      <span style="color:blue;"><%= @article.comments[index].author %></span> &#183 
+      <span style="color:green;"><%= "##{index + 1}" %></span> &#183 
+      <%= time_diff(@article.comments[index].created_at) %><br>
+    <%= @article.comments[index].body %></li>
   <% end %>
+  </ul>
 
-  <hr style="height:1px;border:none;border-top:1px dashed #0066CC;">
-
-  Add a comment: 
-  <%= form_for([@article, @article.comments.build]) do |f| %>
+  
+  <ul class="list-group">
+  <li class="list-group-item">Add a comment: </li>
+  <li class="list-group-item">
+  <%= form_for([@article, @article.comments.build], remote: true) do |f| %>
     <p>
     <%= f.label :commenter %><br>
     <%= f.text_field :author, class: "form-control" %>
@@ -33,9 +43,7 @@
     <%= f.submit class: "btn btn-primary btn-sm active" %>
     </p>
   <% end %>
+  </li>
 
-  <div class="right">
-    <%= link_to 'Edit', edit_article_path(@article) %> |
-    <%= link_to 'Back', articles_path %>  
-  </div>
+  
 </div>
