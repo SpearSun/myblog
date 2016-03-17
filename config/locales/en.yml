@@ -35,4 +35,7 @@ en:
     elsewhere: "Elsewherre"
   article:
     new_article: "New Article"
+  will_paginate:
+    previous_label: "Previous Page"
+    next_label: "Next Page"
   

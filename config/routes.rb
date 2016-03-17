@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'sign_in' => 'users#sign_in'
   get 'sign_out' => 'users#sign_out'
   resources :sessions, only: [:create]
+  resources :admin
 
   get 'archives' => 'archives#index'
   get 'categories' => 'categories#index'

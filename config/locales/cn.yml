@@ -35,4 +35,6 @@ cn:
     elsewhere: "链接"
   article:
     new_article: "新建文章"
-  
+  will_paginate:
+    previous_label: "上一页"
+    next_label: "下一页"
