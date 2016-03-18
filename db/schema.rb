@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317063920) do
+ActiveRecord::Schema.define(version: 20160318082258) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",                   limit: 255
-    t.string   "slug",                    limit: 255
+    t.string   "user_id",                 limit: 255
     t.text     "body",                    limit: 65535
     t.string   "cached_category_list",    limit: 100
     t.boolean  "active",                  limit: 1

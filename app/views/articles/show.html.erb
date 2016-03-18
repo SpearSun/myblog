@@ -12,8 +12,8 @@
   <p><%= markdown(@article.body) %></p>  
 
   <div class="pull-right">
-    <%= link_to 'Edit', edit_article_path(@article) %> |
-    <%= link_to 'Back', articles_path %>  
+    <%= link_to_if my_article?, 'Edit', edit_article_path(@article) %>
+    <%#= link_to 'Back', articles_path %>  
   </div>
   </li></ul>
 
@@ -24,10 +24,11 @@
       <span style="color:blue;"><%= @article.comments[index].author %></span> &#183 
       <span style="color:green;"><%= "##{index + 1}" %></span> &#183 
       <%= time_diff(@article.comments[index].created_at) %>
-      <a class="pull-right" href="javascript:void(0);" onclick="reply(&quot;<%= @article.comments[index].author %>&quot;, &quot;<%= @article.comments[index].id %>&quot;)">Reply</a><br>
-    <% @article.comments[index].body =~ /^(Reply @[\w]+\s)(.*)/ %>
-    <span style="color:blue"><%= $1 %></span>
-    <%= $2 %></li>
+      <!--a class="pull-right" href="javascript:void(0);" onclick="reply(&quot;<%= @article.comments[index].author %>&quot;, &quot;<%= @article.comments[index].id %>&quot;)">Reply</a><br-->
+
+      <%= link_to_if logged_in?, "Reply", "javascript:void(0);", class: "pull-right", onclick: "reply(\"" + @article.comments[index].author + "\", \"" + @article.comments[index].id.to_s + "\")" %><br>
+
+    <%= @article.comments[index].body %></li>
   <% end %>
   </ul>
 
@@ -36,7 +37,7 @@
   <li class="list-group-item">Add a comment: </li>
   <li class="list-group-item">
   <%= form_for([@article, @article.comments.build], remote: true) do |f| %>
-    <input type="hidden" name="comment[id]" id="comment_id"></input>
+    <input type="hidden" name="comment[main_comment_id]" id="comment_id"></input>
     <p>
     <%= f.label :commenter %><br>
     <%= f.text_field :author, class: "form-control" %>
