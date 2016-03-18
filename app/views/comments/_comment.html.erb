@@ -1,5 +1,6 @@
 <li class="list-group-item">
   <span style="color:blue;"><%= @comment.author %></span> &#183 
   <span style="color:green;"><%= "##{@floor}" %></span> &#183 
-  <%= time_diff(@comment.created_at) %><br>
+  <%= time_diff(@comment.created_at) %>
+  <a class="pull-right" href="javascript:void(0);" onclick="reply(&quot;<%= @comment.author %>&quot;)">Reply</a><br>
 <%= @comment.body %></li>

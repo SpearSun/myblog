@@ -1,7 +1,18 @@
 class CommentsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+    
+    if params[:comment][:body] =~ /^Reply @([\w]+)\s/i
+      @comment = Comment.new(
+        article_id: params[:article_id], 
+        author: params[:comment][:author],
+        body: params[:comment][:body],
+        main_comment_id: params[:comment][:id] 
+      )
+      @comment.save
+    else
+     @comment = @article.comments.create(comment_params)
+    end
     @floor = @article.comments.size
 
     respond_to do |format|    
@@ -12,6 +23,6 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:article_id, :author, :body, :body_html)
+      params.require(:comment).permit(:article_id, :author, :body, :body_html, :main_comment_id)
     end
 end
