@@ -25,7 +25,9 @@
       <span style="color:green;"><%= "##{index + 1}" %></span> &#183 
       <%= time_diff(@article.comments[index].created_at) %>
       <a class="pull-right" href="javascript:void(0);" onclick="reply(&quot;<%= @article.comments[index].author %>&quot;, &quot;<%= @article.comments[index].id %>&quot;)">Reply</a><br>
-    <%= @article.comments[index].body %></li>
+    <% @article.comments[index].body =~ /^(Reply @[\w]+\s)(.*)/ %>
+    <span style="color:blue"><%= $1 %></span>
+    <%= $2 %></li>
   <% end %>
   </ul>
 
