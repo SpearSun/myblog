@@ -17,20 +17,7 @@
   </div>
   </li></ul>
 
-  <ul id="comments" class="list-group">
-  <li class="list-group-item">Total <%= pluralize(@article.comments.size, "comment") %>: </li>
-  <% @article.comments.sort.each_index do |index| %>
-    <li class="list-group-item">
-      <span style="color:blue;"><%= @article.comments[index].author %></span> &#183 
-      <span style="color:green;"><%= "##{index + 1}" %></span> &#183 
-      <%= time_diff(@article.comments[index].created_at) %>
-      <!--a class="pull-right" href="javascript:void(0);" onclick="reply(&quot;<%= @article.comments[index].author %>&quot;, &quot;<%= @article.comments[index].id %>&quot;)">Reply</a><br-->
-
-      <%= link_to_if logged_in?, "Reply", "javascript:void(0);", class: "pull-right", onclick: "reply(\"" + @article.comments[index].author + "\", \"" + @article.comments[index].id.to_s + "\")" %><br>
-
-    <%= @article.comments[index].body %></li>
-  <% end %>
-  </ul>
+  <%= render "comments/comment" %>
 
   
   <ul class="list-group">

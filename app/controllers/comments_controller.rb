@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
     
-    if params[:comment][:body] =~ /^Reply @([\w]*)\s/i
+    params[:comment][:body] = params[:comment][:body].strip
+    if params[:comment][:body] =~ /^Reply @(.*)\s/i
       @comment = Comment.new(
         article_id: params[:article_id], 
         author: session[:name],
@@ -19,7 +20,6 @@ class CommentsController < ApplicationController
       @comment.save
       # @comment = @article.comments.create(comment_params)
     end
-    @floor = @article.comments.size
 
     respond_to do |format|    
       format.html { redirect_to article_path(@article) }
