@@ -8,15 +8,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <script>
-    jQuery(document).ajaxSend(function(event, request, settings) {
-      if (typeof(AUTH_TOKEN) == "undefined") return;
-      if (settings.type == 'GET') return;
-      settings.data = settings.data || "";
-      settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
-    });
-
-  </script>
 </head>
 <body>
 <div class="container">

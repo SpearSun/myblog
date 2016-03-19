@@ -14,6 +14,7 @@
   <div class="create_user">
     <%= f.label :name, '*Name' %><br>
     <%= f.text_field :name %> <label class="name_validate"></label>
+    <span id="user_name"></span>
   </div>
 
   <div class="create_user">
@@ -40,4 +41,14 @@
   </div>
 <% end %>
 
-
+<script>
+  $("#user_name").blur(function(){
+    $.post("http://localhost:3000/users/validate",
+    {
+      name: $("#user_name").val()
+    },
+    function(data,status){
+      $(".name_validate").empty().append(data);
+    });
+  });
+</script>

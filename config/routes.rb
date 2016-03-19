@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'sign_in' => 'users#sign_in'
   post 'sign_in' => 'users#sign_in'
   get 'sign_out' => 'users#sign_out'
+  post 'users/validate' => 'users#validate'
   resources :sessions, only: [:create]
   resources :admin
 

@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   # GET /user/new
   def new
     @user = User.new
-    @users = User.all
   end
 
   # GET /users/1/edit
@@ -90,6 +89,18 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def validate
+    # @result = User.find_by(name: params[:name]) ? "Name already exist" : "Available"
+    render text: (User.find_by(name: params[:name]) ? "Name already exist" : "Available")
+
+=begin
+    respond_to do |format|
+      format.js { }
+    end
+=end
+    # User.find_by(name: ) ? "Available" : "Name already exist"
   end
 
   private
