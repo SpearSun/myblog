@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
+  # before_action :authenticate_user!
+
   def create
     @article = Article.find(params[:article_id])
     
@@ -6,16 +9,16 @@ class CommentsController < ApplicationController
     if params[:comment][:body] =~ /^Reply @(.*)\s/i
       @comment = Comment.new(
         article_id: params[:article_id], 
-        author: session[:name],
-        author_id: session[:id],
+        author: current_user.email,
+        author_id: current_user.id,
         body: params[:comment][:body],
         main_comment_id: params[:comment][:main_comment_id] 
       )
       @comment.save
     else
       @comment = Comment.new(comment_params)
-      @comment.author = session[:name]
-      @comment.author_id = session[:id]
+      @comment.author = current_user.email
+      @comment.author_id = current_user.id
       @comment.article_id = params[:article_id]
       @comment.save
       # @comment = @article.comments.create(comment_params)

@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
 
-  get 'sign_in' => 'users#sign_in'
-  post 'sign_in' => 'users#sign_in'
-  get 'sign_out' => 'users#sign_out'
+  devise_for :users, path: "user",
+                     :controllers=>{
+                     :registrations => "users/registrations",
+                     path_names: { validate: 'validate' } }
+  # get 'sign_in' => 'users#sign_in'
+  # post 'sign_in' => 'users#sign_in'
+  # get 'sign_out' => 'users#sign_out'
   post 'users/validate' => 'users#validate'
   resources :sessions, only: [:create]
-  resources :admin
+  # resources :admin
 
   get 'archives' => 'archives#index'
   get 'categories' => 'categories#index'
 
-  resources :users do
-    get :likes
-    resources :articles
-  end
+  # resources :users do
+  #   get :likes
+  #   resources :articles
+  # end
 
   resources :articles do
     resources :comments, only: [:create]

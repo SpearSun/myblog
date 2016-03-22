@@ -44,22 +44,31 @@
       <ul class="nav navbar-nav navbar-right">
         <!--li><a href="#">Link</a></li-->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t('application.sign_in') %> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <% if user_signed_in? %>    
+            Wlecome <%= current_user.email %>
+          <% else %>
+            <%= t('application.sign_in') %> 
+          <% end %>
+          <span class="caret"></span></a>
+
           <ul class="dropdown-menu">
-            <% sign_in.each do |key, value| -%>
-              <li><%= link_to t(key), value %></li>
-            <% end -%>
-            <!--li><a href="#">Another action</a></li-->
-            <li role="separator" class="divider"></li>
-            <% sign_out.each do |key, value| -%>
-              <li><%= link_to t(key), value %></li>
-            <% end -%>
+            <% if user_signed_in? %>    
+              <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to('Change password', edit_registration_path(:user)) %></li>
+            <% else %>    
+              <li><%= link_to 'Log in', new_user_session_path %></li>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>  
+            <% end %>    
           </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<span class="notice"><%= notice %></span>
+<!--span class="alert"><%#= alert %></span-->
 
 <div class="col-sm-8 blog-main">
   

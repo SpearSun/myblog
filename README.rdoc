@@ -2,7 +2,7 @@
 
 This is a blog program constructed base on: 
 
-* Ruby 2.2.2p95
+* Ruby 2.2.2
 
 * Mysql 14.14
 
@@ -10,5 +10,3 @@ This is a blog program constructed base on:
 
 * rspec 3.4.0
 
-= Set default character set when create database to support chinese character
-e.g. create database myblog_development default character set = 'utf8';

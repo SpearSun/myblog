@@ -9,7 +9,7 @@
       <%= time_diff(@article.comments[index].created_at) %>
       <!--a class="pull-right" href="javascript:void(0);" onclick="reply(&quot;<%= @article.comments[index].author %>&quot;, &quot;<%= @article.comments[index].id %>&quot;)">Reply</a><br-->
 
-      <%= link_to_if logged_in?, "Reply", "javascript:void(0);", class: "pull-right", onclick: "reply(\"" + @article.comments[index].author + "\", \"" + @article.comments[index].id.to_s + "\")" %><br>
+      <%= link_to_if !current_user.nil?, "Reply", "javascript:void(0);", class: "pull-right", onclick: "reply(\"" + @article.comments[index].author + "\", \"" + @article.comments[index].id.to_s + "\")" %><br>
 
     <%= @article.comments[index].body %></li>
   <% end %>
