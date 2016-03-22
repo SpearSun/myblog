@@ -1,23 +1,25 @@
 Rails.application.routes.draw do
 
-  devise_for :users, path: "user",
-                     :controllers=>{
-                     :registrations => "users/registrations",
-                     path_names: { validate: 'validate' } }
+  devise_scope :user do
+    post 'users/validate', to: 'users/registrations#validate', as: 'validate'
+  end
+
+  devise_for :users
+  
   # get 'sign_in' => 'users#sign_in'
   # post 'sign_in' => 'users#sign_in'
   # get 'sign_out' => 'users#sign_out'
-  post 'users/validate' => 'users#validate'
-  resources :sessions, only: [:create]
+  # post 'users/validate' => 'users#validate'
+  # resources :sessions, only: [:create]
   # resources :admin
 
   get 'archives' => 'archives#index'
   get 'categories' => 'categories#index'
 
-  # resources :users do
-  #   get :likes
-  #   resources :articles
-  # end
+  post 'validate' => 'users/users#validate'
+  resources :users do
+    resources :articles
+  end
 
   resources :articles do
     resources :comments, only: [:create]
