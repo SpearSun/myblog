@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
     
-    params[:comment][:body] = params[:comment][:body].strip
     if params[:comment][:body] =~ /^Reply @(.*)\s/i
       @comment = Comment.new(
         article_id: params[:article_id], 
