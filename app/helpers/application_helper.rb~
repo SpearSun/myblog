@@ -1,4 +1,5 @@
 module ApplicationHelper
+=begin
   def sign_in
     links = {}
     unless session[:name]
@@ -21,6 +22,7 @@ module ApplicationHelper
   def logged_in?
     session[:name].nil? ? false : true
   end
+=end
 
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language)

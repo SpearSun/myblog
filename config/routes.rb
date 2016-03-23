@@ -6,13 +6,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  # get 'sign_in' => 'users#sign_in'
-  # post 'sign_in' => 'users#sign_in'
-  # get 'sign_out' => 'users#sign_out'
-  # post 'users/validate' => 'users#validate'
-  # resources :sessions, only: [:create]
-  # resources :admin
-
   get 'archives' => 'archives#index'
   get 'categories' => 'categories#index'
 
@@ -25,6 +18,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  post 'favorite' => 'favorites#favorite'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

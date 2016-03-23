@@ -1,28 +1,4 @@
 module ApplicationHelper
-=begin
-  def sign_in
-    links = {}
-    unless session[:name]
-      links['application.sign_in'] = "/sign_in"
-      links['application.sign_up'] = "/users/new"
-    else
-      links["Logged in as " + session[:name]] = '/users/show'
-    end
-    links
-  end
-
-  def sign_out
-    links = {}
-    if session[:name]
-      links['application.sign_out'] = "/sign_out"
-    end
-    links
-  end
-
-  def logged_in?
-    session[:name].nil? ? false : true
-  end
-=end
 
   class CodeRayify < Redcarpet::Render::HTML
     def block_code(code, language)

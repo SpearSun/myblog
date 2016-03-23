@@ -9,12 +9,11 @@
   <div class="pull-right"><% @article.cached_tag_list.split(";").each do |tag| -%>
     <span class="label label-info"><%= tag%></span>
   <% end -%></div>
-  <p><%= markdown(@article.body) %></p>  
-
-  <div class="pull-right">
+  <p><%= markdown(@article.body) %></p></li>
+  
+  <li class="list-group-item">
     <%= link_to_if (user_signed_in? ? (@article.user_id.to_i == current_user.id.to_i) : false), 'Edit', edit_article_path(@article) %>
-    <%#= link_to 'Back', articles_path %>  
-  </div>
+    <span class="pull-right"><button id='favorite'>favorite</button></span>
   </li></ul>
 
   <%= render "comments/comment" %>
@@ -37,5 +36,18 @@
   <% end %>
   </li>
 
-  
 </div>
+
+<script>
+  $("#favorite").click(function(){
+    $.post("http://localhost:3000/favorite",
+    {
+      user_id: <%= current_user.try(:id) %>, 
+      article_id: <%= @article.id %>
+    },
+    function(data,status){
+      alert(data);
+      $("#favorite").val(data);
+    });
+  });
+</script>
